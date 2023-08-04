@@ -22,18 +22,38 @@ API para gerenciar lugares (CRUD)
 - Tratamento de respostas de erro
 - Geração automática do Swagger com a OpenAPI 3
 
+
 ## Como Executar
 
+### Localmente
 - Clonar repositório git
 - Construir o projeto:
 ```
-$ ./mvnw clean package
+./mvnw clean package
 ```
-- Executar a aplicação:
+- Executar:
 ```
-$ java -jar target/place-service-0.0.1-SNAPSHOT.jar
+java -jar place-service/target/place-service-0.0.1-SNAPSHOT.jar
 ```
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
 O Swagger poderá ser visualizado em [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
+### Usando Docker
+
+- Clonar repositório git
+- Construir o projeto:
+```
+./mvnw clean package
+```
+- Construir a imagem:
+```
+./mvnw spring-boot:build-image
+```
+- Executar o container:
+```
+docker run --name place-service -p 8080:8080  -d place-service:0.0.1-SNAPSHOT
+```
+
+A API poderá ser acessada em [localhost:8080](http://localhost:8080).
+O Swagger poderá ser visualizado em [localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
