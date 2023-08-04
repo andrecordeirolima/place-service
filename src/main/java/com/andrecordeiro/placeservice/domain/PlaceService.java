@@ -1,5 +1,6 @@
 package com.andrecordeiro.placeservice.domain;
 
+import com.andrecordeiro.placeservice.api.PlaceRequest;
 import reactor.core.publisher.Mono;
 
 public class PlaceService {
@@ -9,7 +10,9 @@ public class PlaceService {
         this.placeRepository = placeRepository;
     }
 
-    public Mono<Place> create(Place place) {
+    public Mono<Place> create(PlaceRequest placeRequest) {
+        var place = new Place(null, placeRequest.name(), placeRequest.slug(),
+                placeRequest.state(), placeRequest.createdAt(), placeRequest.updatedAt());
         return placeRepository.save(place);
     }
 
